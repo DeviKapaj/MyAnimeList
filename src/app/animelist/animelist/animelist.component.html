@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Anime List</h1>
+
+  <form
+    class="add-anime-form"
+    id="addAnimeForm"
+    #form="ngForm"
+    (ngSubmit)="onFormSubmit(form)"
+  >
+    <input
+      type="text"
+      class="add-anime-input"
+      id="animeTitleInput"
+      placeholder="Enter anime title..."
+      required
+      ngModel
+      name="text"
+      style="text-transform: capitalize"
+      #animetextField="ngModel"
+    />
+    <button type="submit" class="add-anime-button">Add Anime</button>
+    <div *ngIf="animetextField.invalid && showValidationsError">
+      <p>Empty input!!</p>
+    </div>
+  </form>
+
+  <ul class="anime-list" *ngFor="let anime of animes; index as i">
+    <li class="anime-item" (click)="openDialog(anime)">
+      <div class="anime-details">
+        <img src="{{ anime.posterUrl }}" width="85" height="70" />
+        <h2 class="anime-title">{{ anime.animename }}</h2>
+        <div class="delete">
+          <button
+            class="deleteButton"
+            type="button"
+            (click)="onDeleteClicked(anime)"
+          >
+            <span class="material-symbols-outlined"> delete </span>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

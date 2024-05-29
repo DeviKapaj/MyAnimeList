@@ -1,0 +1,12 @@
+<div class="dialog">
+  <h2>{{ anime.animename }}</h2>
+  <p>
+    Rating: {{ anime.rating }}
+    <button (click)="openRatingDialog()">Update Rating</button>
+  </p>
+  <div class="poster">
+    <img [src]="anime.posterUrl" alt="Poster" />
+  </div>
+  <p>{{ anime.plot }}</p>
+  <button type="button" class="close" (click)="close()">Close</button>
+</div>

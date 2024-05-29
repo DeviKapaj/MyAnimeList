@@ -1,0 +1,15 @@
+<div class="dialog-container">
+  <h2>Update Rating</h2>
+  <label for="newRatingInput">New Rating:</label>
+  <input
+    type="number"
+    id="newRatingInput"
+    [ngModel]="newRating"
+    name="newRating"
+    (ngModelChange)="limitToTen($event)"
+  />
+  <div *ngIf="showErrorMessage" class="error-message">
+    Rating must be 10 or less.
+  </div>
+  <button (click)="onRatingUpdate()">Update</button>
+</div>
